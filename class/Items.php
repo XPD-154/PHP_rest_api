@@ -47,11 +47,6 @@ class Items{
 
 	function create(){
 
-		/*
-		$stmt = $this->conn->prepare("
-			INSERT INTO ".$this->itemsTable."(`name`, `description`, `price`, `category_id`, `created`)
-			VALUES(?,?,?,?,?)");
-		*/
 		$this->user_ip_address = htmlspecialchars(strip_tags($this->user_ip_address));
 		$this->user_agent = htmlspecialchars(strip_tags($this->user_agent));
 		$this->page_url = htmlspecialchars(strip_tags($this->page_url));
@@ -70,10 +65,6 @@ class Items{
 							':user'=>$this->user,
 							':message'=>$this->message,
 							':project'=>$this->project));
-
-		/*
-		$stmt->bind_param("ssiis", $this->name, $this->description, $this->price, $this->category_id, $this->created);
-		*/
 
 		if($sql){
 			return true;
@@ -111,14 +102,6 @@ class Items{
 							':user'=>$this->user,
 							':message'=>$this->message,
 							':project'=>$this->project));
-		/*
-		$stmt = $this->conn->prepare("
-			UPDATE ".$this->itemsTable."
-			SET name= ?, description = ?, price = ?, category_id = ?, created = ?
-			WHERE id = ?");
-
-		$stmt->bind_param("ssiisi", $this->name, $this->description, $this->price, $this->category_id, $this->created, $this->id);
-		*/
 
 		if($sql){
 			return true;
@@ -129,19 +112,18 @@ class Items{
 
 	function delete(){
 
-		$stmt = $this->conn->prepare("
-			DELETE FROM ".$this->itemsTable."
-			WHERE id = ?");
-
 		$this->id = htmlspecialchars(strip_tags($this->id));
 
-		$stmt->bind_param("i", $this->id);
+		$query="DELETE FROM ".$this->itemsTable." WHERE id = :id";
+		$sql=$this->conn->prepare($query);
+		$sql->execute(array(':id'=>$this->id));
 
-		if($stmt->execute()){
+		if($sql){
 			return true;
 		}
 
 		return false;
+
 	}
 }
 ?>

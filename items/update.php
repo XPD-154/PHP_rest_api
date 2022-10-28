@@ -68,4 +68,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_API_KEY']) && $
         array("message" => "Error!!! Input API key/Check request method")
     );
 }
+
+/*
+Nature of Data
+{
+"id": "61",
+"name": "Usha Sewing Automatic Machine",
+"description": "its best machine",
+"price":"90000",
+"category_id":"6",
+"created": "2019-11-09 04:30:00"
+}
+*/
 ?>
