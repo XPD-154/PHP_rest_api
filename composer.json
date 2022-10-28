@@ -1,0 +1,7 @@
+{
+	
+    "require": {
+        "josegonzalez/dotenv": "^3.2",
+        "jtrumbull/xml-parser": "^1.0"
+    }
+}
