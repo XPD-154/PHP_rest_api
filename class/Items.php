@@ -14,6 +14,7 @@ class Items{
 	public $project;
     private $conn;
 
+    //class constructor
     public function __construct($db){
         $this->conn = $db;
     }
@@ -45,6 +46,7 @@ class Items{
 		return $result;
 	}
 
+    //method for creating data
 	function create(){
 
 		$this->user_ip_address = htmlspecialchars(strip_tags($this->user_ip_address));
@@ -73,6 +75,7 @@ class Items{
 		return false;
 	}
 
+    //method for updating data
 	function update(){
 
 		$this->id = htmlspecialchars(strip_tags($this->id));
@@ -110,6 +113,7 @@ class Items{
 		return false;
 	}
 
+    //method for deleting data
 	function delete(){
 
 		$this->id = htmlspecialchars(strip_tags($this->id));

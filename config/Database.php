@@ -17,6 +17,7 @@ class Database{
     private $password;
     private $database;
 
+    //class constructor
     public function __construct() {
         $this->host = $_ENV['server_name'];
         $this->user = $_ENV['user_name'];
@@ -24,6 +25,7 @@ class Database{
         $this->database = $_ENV['db_name'];
     }
 
+    //method for connecting to remote database
     public function getConnection(){
 
         try{
