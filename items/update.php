@@ -53,17 +53,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_API_KEY']) && $
         	}
 
         } else {
-        	http_response_code(400);
+        	http_response_code(404);
             echo json_encode(array("message" => "Error!!! Unable to update items. Data is incomplete."));
         }
 
     }else{
-       echo json_encode(
+        http_response_code(401);
+        echo json_encode(
             array("message" => "authentication failed.")
         );
     }
 
 }else{
+    http_response_code(401);
     echo json_encode(
         array("message" => "Error!!! Input API key/Check request method")
     );

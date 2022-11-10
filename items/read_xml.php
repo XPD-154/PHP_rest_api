@@ -35,21 +35,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_API_KEY']) && $
             echo $xml->asXML();
 
         }else{
-            http_response_code(400);
+            http_response_code(404);
             $message = array("message" => "No item found.");
             $xml = XMLParser::encode($message, 'response');
             echo $xml->asXML();
 
         }
     }else{
-        http_response_code(400);
+        http_response_code(401);
         $message = array("message" => "authentication failed.");
         $xml = XMLParser::encode($message, 'response');
         echo $xml->asXML();
 
     }
 }else{
-    http_response_code(400);
+    http_response_code(401);
     $message = array("message" => "Error!!! Input API key/Check request method.");
     $xml = XMLParser::encode($message, 'response');
     echo $xml->asXML();
